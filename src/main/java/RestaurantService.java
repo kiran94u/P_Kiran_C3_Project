@@ -30,4 +30,7 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+    public  int calculateOrder(String restaurantName,List<String> orderedItems){
+        return 0;
+    }
 }
