@@ -40,6 +40,9 @@ class RestaurantServiceTest {
     }
     //<<<<<<<<<<<<<<<<<<<<SEARCHING>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+
+
     //>>>>>>>>>>>>>>>>>>>>>>ADMIN: ADDING & REMOVING RESTAURANTS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
     public void remove_restaurant_should_reduce_list_of_restaurants_size_by_1() throws restaurantNotFoundException {
@@ -56,17 +59,21 @@ class RestaurantServiceTest {
     @Test
     public void add_restaurant_should_increase_list_of_restaurants_size_by_1()
     {
+
         int initialNumberOfRestaurants = service.getRestaurants().size();
         service.addRestaurant("Pumpkin Tales","Chennai",LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+
+
+
     //<<<<<<<<<<<<<<<<<<<<CALCULATE ORDER>>>>>>>>>>>>>>>>>>>>>>>>>>//
     @Test
-    public void adding_items_should_calculate_correct_order_value()
-    {
-        List<String> itemsToOrder= new ArrayList<>(Arrays.asList("Coffe","Vegetable lasagne"));
+    public void adding_items_should_calculate_correct_order_value() throws restaurantNotFoundException {
+        List<String> itemsToOrder= new ArrayList<>(Arrays.asList("Coffee","Vegetable lasagne"));
         int orderValue=service.calculateOrder(restaurant.getName(),itemsToOrder);
         assertEquals(orderValue,419);
     }

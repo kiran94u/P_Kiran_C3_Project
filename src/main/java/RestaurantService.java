@@ -22,15 +22,25 @@ public class RestaurantService {
         return newRestaurant;
     }
 
-    public void removeRestaurant(String restaurantName) throws restaurantNotFoundException {
+    public Restaurant removeRestaurant(String restaurantName) throws restaurantNotFoundException {
         Restaurant restaurantToBeRemoved = findRestaurantByName(restaurantName);
         restaurants.remove(restaurantToBeRemoved);
+        return restaurantToBeRemoved;
     }
 
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
-    public  int calculateOrder(String restaurantName,List<String> orderedItems){
-        return 0;
+
+    public  int calculateOrder(String restaurantName,List<String> orderedItems) throws restaurantNotFoundException {
+        Restaurant restaurant=findRestaurantByName(restaurantName);
+        int orderValue = 0;
+        for(Item item : restaurant.getMenu())
+        {
+            if(orderedItems.contains(item.getName())) {
+                orderValue += item.getPrice();
+            }
+        }
+        return orderValue;
     }
 }
